@@ -1,0 +1,60 @@
+<div class="max-w-xs w-96">
+  <form class="bg-white shadow-md px-7 pt-5 pb-8 mb-6 rounded-lg border " (ngSubmit)="submit()" #myForm="ngForm" >
+    <h1 class="text-center text-xl">Zarejestruj się</h1>
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
+        Email
+      </label>
+      <input class="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" id="email"
+      type="email" name="email" placeholder="Email" [(ngModel)] = "form.email" #email="ngModel" required>
+    </div>
+    <div *ngIf="email.invalid && (email.dirty || email.touched)" class="mb-4 p-4 bg-red-400 text-white rounded">
+      Email musi być prawidłowy.
+    </div>
+    <div class="mb-6">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="password" >
+        Hasło
+      </label>
+      <input class="shadow appearance-none border rounded w-full py-2 px-3 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+        id="password" name="password" type="password" placeholder="******************" [(ngModel)] = "form.password" #password="ngModel" required>
+    </div>
+    <div *ngIf="password.invalid && (password.dirty ||  password.touched)" class="mb-4 p-4 bg-red-400 text-white rounded">
+      Wprowadź hasło
+    </div>
+    <div class="mb-6">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="passwordConfirm">
+        Potwierdź hasło
+      </label>
+      <input class="shadow appearance-none border rounded w-full py-2 px-3 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+        id="passwordConfirm" name="passwordConfirm" type="password" placeholder="******************" [(ngModel)] = "form.passwordConfirm" #passwordConfirm="ngModel" required >
+        <div *ngIf="passwordConfirm.invalid && (passwordConfirm.dirty || passwordConfirm.touched)" class="mb-4 p-4 bg-red-400 text-white rounded">
+          Powtórz hasło
+        </div>
+    </div>
+    <div class="flex items-center justify-between">
+
+      <button class="p-2 w-full bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 cursor-pointer rounded focus:outline-none focus:shadow-outline"
+      type="submit"  [disabled]="myForm.form.invalid">
+        <ng-container *ngIf="isLoading()">
+          Logowanie...
+        </ng-container>
+        <ng-container *ngIf="!isLoading()">
+          Zarejestruj
+        </ng-container>
+      </button>
+ <!--
+      <input class= "p-2 w-full bg-violet-600 hover:bg-blue-700 text-white font-bold py-2 px-4 cursor-pointer rounded focus:outline-none focus:shadow-outline"
+      type="submit"  [disabled]="myForm.form.invalid" value="Rejestruj" />
+     <button class="bg-blue-400 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+      type="button" [disabled]="myForm.form.invalid">
+        Rejestruj
+      </button>
+      <a class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="#">
+        Forgot Password?
+      </a>-->
+    </div>
+  </form>
+  <p class="text-center text-xs">
+    &copy;2023 Slaws. Wszelkie prawa zastrzeżone.
+  </p>
+</div>

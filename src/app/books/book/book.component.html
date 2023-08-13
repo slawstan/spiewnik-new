@@ -1,0 +1,15 @@
+
+  <li class="flex border rounded-xl h-60">
+    <img [src]="book.image" [alt]="book.name" width="100"
+        class="m-auto rounded-sm" />
+    <div class="m-auto">
+        <p class="text-lg">{{ book.name | titlecase }} by {{ book.author |
+            titlecase}}</p>
+        <p class="my-4">{{ book.amount | currency:'zł' }}</p>
+        <button class="bg-yellow-400 rounded p-3" *ngIf="!isInCart"
+            (click)="addToCart()">Do koszyka</button>
+        <button class="bg-yellow-400 rounded p-3" *ngIf="isInCart"
+            (click)="removeFromCart()">Usuń z koszyka</button>
+    </div>
+</li>
+

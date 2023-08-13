@@ -1,0 +1,110 @@
+
+<div class="full-content">
+  <div class="flex justify-center pb-2">
+    <h1 id="titleH1" class="text-center text-3xl font-bold">{{wpis.title?.rendered}}</h1>
+  </div>
+
+  <div class="flex p-2 justify-center py-1  text-xl leading-normal">
+    <div class="rounded-xl bg-white p-3 shadow-lg hover:shadow-xl hover:transform w-full max-w-[900px] duration-300  ">
+
+    <div class="content-table" [style.fontSize.px]="rozmiarCzcionki">
+      <div class="content" [innerHTML]="wpis.rendered"></div>
+    </div>
+  </div>
+  </div>
+<div id="end"></div>
+</div>
+<div class="flex p-2 justify-center py-1  text-xl leading-normal">
+  <button class="play-open" du-smooth-scroll  (click)="scroll()">
+    <i class="fa-solid fa-play text-2xl" aria-hidden="true"></i>
+  </button>
+</div>
+<button class="chatbox-open">
+  <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
+</button>
+<button class="chatbox-close">
+  <i class="fa fa-close fa-2x" aria-hidden="true"></i>
+</button>
+<section class="chatbox-popup">
+<header class="chatbox-popup__header">
+  <aside style="flex:3">
+    <app-svg-icon class="icon guitarIcon" [path]="'assets/svg/guitar-instrument.svg'" ></app-svg-icon>
+  </aside>
+  <aside style="flex:8">
+    <h1>Transponuj</h1> Zmień czcionkę
+  </aside>
+  <aside style="flex:1">
+    <button class="chatbox-maximize"><i class="fa fa-window-maximize" aria-hidden="true"></i></button>
+  </aside>
+</header>
+<main class="chatbox-popup__main">
+  <div class="flex p-2 justify-center py-1  text-xl leading-normal">
+    <label class="text-base p-2 align-middle" for="fontSizeRange">Wielkość czcionki:</label>
+    <input title="Wielkość czcionki" name="fontSizeRange" class="ranger" [(ngModel)]="fontSize" type="range" min="10" max="60" [value]="fontSize" #ranger (input)="fontRange()">
+  </div>
+  <div class="flex end">
+      <label class="text-base p-2 align-middle" for="fontSizeRange">Transpozycja:</label>
+      <button class="plusIcon" (click)="transpose('down')">
+        <app-svg-icon class="icon plusIcon" [path]="'assets/svg/circle-minus.svg'" ></app-svg-icon>
+      </button>
+      <input class="key" title="musicKey" name="musicKey" [(ngModel)]="musicKey" type="number" />
+      <button class="minusIcon"  (click)="transpose('up')">
+        <app-svg-icon class="icon minusIcon" [path]="'assets/svg/circle-plus.svg'" ></app-svg-icon>
+      </button>
+  </div>
+  <div class="flex p-2 justify-center py-1  text-xl leading-normal">
+    <app-svg-icon class="icon editIcon" [path]="'assets/svg/edit.svg'" ></app-svg-icon>
+    <a class="linkEdit" href="./posts/{{wpis.id}}/edit">Edytuj</a>
+  </div>
+</main>
+<footer class="chatbox-popup__footer">
+  <aside style="flex:1;color:#888;text-align:center;">
+  </aside>
+  <aside style="flex:10">
+  </aside>
+  <aside style="flex:1;color:#888;text-align:center;">
+  </aside>
+</footer>
+</section>
+<section class="chatbox-panel">
+<header class="chatbox-panel__header">
+  <aside style="flex:3">
+    <app-svg-icon class="icon guitarIcon" [path]="'assets/svg/guitar-instrument.svg'" ></app-svg-icon>
+  </aside>
+  <aside style="flex:6">
+    <h1>Transponuj</h1> Zmień czcionkę
+  </aside>
+  <aside style="flex:3;text-align:right;">
+    <button class="chatbox-minimize"><i class="fa fa-window-restore" aria-hidden="true"></i></button>
+    <button class="chatbox-panel-close"><i class="fa fa-close" aria-hidden="true"></i></button>
+  </aside>
+</header>
+<main class="chatbox-panel__main" style="flex:1">
+  <div class="flex p-2 justify-center py-1  text-xl leading-normal">
+    <label class="text-base p-2 align-middle" for="fontSizeRange">Wielkość czcionki:</label>
+    <input title="Wielkość czcionki" name="fontSizeRange" class="ranger" [(ngModel)]="fontSize" type="range" min="10" max="60" [value]="fontSize" #ranger (input)="fontRange()">
+  </div>
+  <div class="flex end">
+    <label class="text-base p-2 align-middle" for="fontSizeRange">Transpozycja:</label>
+    <button class="plusIcon" (click)="transpose('down')">
+      <app-svg-icon class="icon plusIcon" [path]="'assets/svg/circle-minus.svg'" ></app-svg-icon>
+    </button>
+    <input class="key" title="musicKey" name="musicKey" [(ngModel)]="musicKey" type="number" />
+    <button class="minusIcon"  (click)="transpose('up')">
+      <app-svg-icon class="icon minusIcon" [path]="'assets/svg/circle-plus.svg'" ></app-svg-icon>
+    </button>
+</div>
+<div class="flex p-2 justify-center py-1  text-xl leading-normal">
+  <app-svg-icon class="icon editIcon" [path]="'assets/svg/edit.svg'" ></app-svg-icon>
+  <a class="linkEdit" href="./posts/{{wpis.id}}/edit">Edytuj</a>
+</div>
+</main>
+<footer class="chatbox-panel__footer">
+  <aside style="flex:1;color:#888;text-align:center;">
+  </aside>
+  <aside style="flex:10">
+  </aside>
+  <aside style="flex:1;color:#888;text-align:center;">
+  </aside>
+</footer>
+</section>

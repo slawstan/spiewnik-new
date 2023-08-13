@@ -1,0 +1,17 @@
+<h2>Programing books list</h2>
+<button (click)="handleClick()" [disabled] = "isDisabled">Show books</button>
+<button (click)="toggleBooks()">Toggle books</button>
+<button (click)="isShowing = !isShowing">
+  <ng-container *ngIf="!isShowing">Show books</ng-container>
+  <ng-container *ngIf="isShowing">Hide books</ng-container>
+</button>
+
+<input type="text" [(ngModel)] ="myName"/>
+<div>{{myName}}</div>
+
+<ul *ngIf="isShowing" class="flex flex-wrap justify-center">
+  <ng-container *ngFor="let singleBook of books; let i=index">
+      <app-book [book]="singleBook" class="w-1/2 p-5 text-center">
+      </app-book>
+  </ng-container>
+</ul>

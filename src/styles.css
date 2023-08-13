@@ -1,1 +1,124 @@
 /* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@layer base {
+  html {
+    @apply font-quicksand;
+    @apply text-main-500;
+    @apply font-default;
+  }
+}
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+@import '../node_modules/font-awesome/css/font-awesome.css';
+@import '../node_modules/@fortawesome/fontawesome-free/css/fontawesome.css';
+@import '../node_modules/@fortawesome/fontawesome-free/css/regular.css';
+@import '../node_modules/@fortawesome/fontawesome-free/css/brands.css';
+@import '../node_modules/@fortawesome/fontawesome-free/css/solid.css';
+@import '../node_modules/@fortawesome/fontawesome-free/css/all.min.css';
+
+*, :after, :before {
+  box-sizing: border-box;
+}
+
+input {
+  outline: none;
+}
+
+.bg-transparent {
+  background-color: transparent !important;
+}
+
+input:-internal-autofill-selected {
+    background-color: none!important;
+    color: '#1976D2' !important;
+}
+
+img.featured-media {
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  background-position: center;
+}
+
+div.content {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+div.content-table table {
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 25px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+
+div.content-table > p > table tr td span {
+  font-size: 12pt;
+  color: rgb(153, 153, 153);
+}
+
+
+.full-content {
+  width: 94vw;
+}
+
+iframe {
+    display: inline-block;
+    vertical-align: middle;
+    width: none;
+}
+
+.annotated-lyrics {
+  line-height: 2.2em;
+  position: relative;
+}
+
+
+@media only screen and (max-width: 600px) {
+  iframe {
+    width: inherit;
+  }
+}
+
+code {
+  font-weight: 700;
+  color: #db261e!important;
+  font-size: 70%;
+  word-break: keep-all;
+}
+
+.interpretation-content {
+  /*font-family: 'Roboto Mono',monospace!important;*/
+  position: relative;
+  overflow-y: visible;
+  padding-top: 3px;
+}
+
+.annotated-lyrics {
+  position: relative;
+}
+
+.annotated-lyrics code {
+  position: relative;
+  top: -1.2em;
+  width: 0;
+  display: inline-block;
+  letter-spacing: -1px;
+}
+
+.pacifico {
+  font-family: 'Pacifico', cursive;
+}
+
+.icon {
+  background-color: rgb(25, 118, 210);
+  display: block;
+}
+
+.iconWhite {
+  background-color: white;
+  display: block;
+}
+
+

@@ -1,0 +1,18 @@
+<div class="w-screen bg-gray-100">
+  <div class="flex justify-center pb-10">
+    <h1 *ngIf="category != null" class="text-center text-3xl font-bold">Piosenki: {{category}}</h1>
+    <h1 *ngIf="search != null" class="text-center text-3xl font-bold">Wynik dla: "{{search}}"</h1>
+  </div>
+  <div class="flex justify-center py-10">
+    <div class="rounded-xl bg-white p-3 shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300 ">
+      <div class="mx-auto grid max-w-12xl  grid-cols-1 gap-12 p-12 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1">
+        <ul>
+          <ng-container *ngFor="let post of posts; let i=index">
+            <li class="pb-4 leading-tight"><a class="text-2xl font-bold" href="./posts/{{post.id}}">{{post.title?.rendered}}</a></li>
+          </ng-container>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
