@@ -8,7 +8,6 @@ import {
 } from '@angular/common/http';
 import { Global } from '../global';
 import { AuthService } from '../auth/auth.service';
-import { withCache } from '@ngneat/cashew';
 
 
 @Injectable({
@@ -16,16 +15,14 @@ import { withCache } from '@ngneat/cashew';
 })
 export class PostsService {
 
-
+  private options = {
+    headers: Global.headers
+  };
   constructor(private http: HttpClient, public router: Router, private authService: AuthService) { }
 
   getPostsForCategory(categoryId: number): Observable<any> {
     let api = `${Global.apiUrl}/posts?categories=${categoryId}&orderby=waznosc&per_page=100&order=asc`;
-    return this.http.get(api, { headers: Global.headers, context: withCache({
-      version: 'v1',
-      key: `posts?cat=${categoryId}`,
-      ttl: 3153600000
-    }) }).pipe(
+    return this.http.get(api, this.options).pipe(
       map((res) => {
         return res || {};
       }),
@@ -35,11 +32,7 @@ export class PostsService {
 
   getPost(postId: number): Observable<any> {
     let api = `${Global.apiUrl}/posts/${postId}`;
-    return this.http.get(api, { headers: Global.headers, context: withCache({
-      version: 'v1',
-      key: `posts/${postId}`,
-      ttl: 3153600000
-    }) }).pipe(
+    return this.http.get(api, this.options).pipe(
       map((res) => {
         return res || {};
       }),
@@ -49,11 +42,7 @@ export class PostsService {
 
   getSearchPosts(searchVal: string): Observable<any> {
     let api = `${Global.apiUrl}/posts?search=${searchVal}, "&orderby=title&per_page=100&order=asc`;
-    return this.http.get(api, { headers: Global.headers, context: withCache({
-      version: 'v1',
-      key: `search/${searchVal}`,
-      ttl: 3153600000
-    }) }).pipe(
+    return this.http.get(api, this.options).pipe(
       map((res) => {
         return res || {};
       }),

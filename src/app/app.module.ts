@@ -10,9 +10,8 @@ import localePL from '@angular/common/locales/pl';
 import { BooksModule } from './books/books.module';
 import { CartComponent } from './cart/cart.component';
 import { AuthModule } from './auth/auth.module';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
 import { UserProfileComponent } from './user-profile/user-profile.component';
-import { SpinnerComponent } from './spinner/spinner.component';
 import {interceptorProviders} from './interceptors';
 import { CategoriesModule } from './categories/categories.module';
 import { PostsModule } from './posts/posts.module';
@@ -21,7 +20,8 @@ import { PostModule } from './posts/post.module';
 import { SvgIconModule } from './svg-icon/svg-icon.module';
 import { SplashScreenComponent } from './splash-screen/splash-screen.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
-import { HttpCacheInterceptorModule, useHttpCacheLocalStorage } from '@ngneat/cashew';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 registerLocaleData(localePL);
@@ -32,7 +32,6 @@ registerLocaleData(localePL);
     TextcomponentComponent,
     CartComponent,
     UserProfileComponent,
-    SpinnerComponent,
     SplashScreenComponent,
   ],
   imports: [
@@ -47,15 +46,16 @@ registerLocaleData(localePL);
     AuthModule,
     HttpClientModule,
     SvgIconModule,
-    HttpCacheInterceptorModule.forRoot(),
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),
       // Register the ServiceWorker as soon as the application is stable
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000'
-    })
+    }),
+    BrowserAnimationsModule,NgxSpinnerModule,
+    NgxSpinnerModule.forRoot({ type: 'square-jelly-box' })
   ],
-  providers: [interceptorProviders,useHttpCacheLocalStorage],
+  providers: [HttpClient, interceptorProviders],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,
     NO_ERRORS_SCHEMA
