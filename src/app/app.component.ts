@@ -54,7 +54,7 @@ export class AppComponent implements OnInit {
 
     submit() {
       this.searchVal = this.form.searchValue;
-      this.router.navigate(['/posts'], {queryParams: {search: this.searchVal}});
+      this.router.navigate(['/category'], {queryParams: {search: this.searchVal}});
     }
 
     eventClickMethod(event:any){
