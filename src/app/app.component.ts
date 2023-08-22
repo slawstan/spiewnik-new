@@ -21,7 +21,7 @@ export class AppComponent implements OnInit {
   posts: Post[] =[] as Post[];
 
 
-  constructor(private authService: AuthService, private postsService: PostsService, private router: Router, private route: ActivatedRoute) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
 
     ngOnInit(): void {

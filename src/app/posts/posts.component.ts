@@ -20,10 +20,6 @@ export class PostsComponent implements OnInit {
 
 constructor(private postsService: PostsService, private route: ActivatedRoute, private router: Router){}
 
-open(path: string) {
-  this.router.navigateByUrl(path);
-}
-
   ngOnInit(): void {
 
     this.route.queryParams.subscribe(params => {

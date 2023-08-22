@@ -121,4 +121,24 @@ code {
   display: block;
 }
 
+app-svg-icon.iconDk {
+  background-color: white;
+  display: block;
+}
 
+app-svg-icon.icon{
+  background-color: rgb(25, 118, 210);
+  display: block;
+}
+
+.svgDk {
+  display: block;
+    width: 45px;
+    height: 45px;
+}
+
+.search {
+  display: block;
+    width: 35px;
+    height: 35px;
+}

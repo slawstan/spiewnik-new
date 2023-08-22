@@ -26,5 +26,23 @@
         ]
       }
     }
+  ],
+  "dataGroups": [
+  {
+    "name": "data",
+    "cacheConfig": {
+           "strategy": "freshness",
+           "maxAge": "365d",
+           "maxSize": 100,
+           "timeout": "10s"
+         },
+         "urls": [
+          "/category**",
+          "/blogapp**",
+          "/posts**",
+           "/post/**",
+           "/users**"
+         ]
+      }
   ]
 }

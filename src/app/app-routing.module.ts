@@ -11,15 +11,15 @@ import { PostsComponent } from './posts/posts.component';
 import { PostComponent } from './posts/post/post.component';
 
 const routes: Routes = [
-  {path:'', component:CategoriesComponent, canActivate:[AuthGuard], },
+  {path:'', component:CategoriesComponent, canActivate:[AuthGuard]},
   {path:'books',component:BooksComponent},
   {path:'cart',component:CartComponent, canActivate:[AuthGuard]},
   {path:'login',component:LoginComponent},
   {path:'register',component:RegisterComponent},
   {path:'user-profile/:id',component:UserProfileComponent, canActivate:[AuthGuard]},
-  {path:'posts', component: PostsComponent, canActivate:[AuthGuard],},
-  {path: 'posts/:id',   component: PostComponent,   canActivate:[AuthGuard], },
-  {path: 'posts/:id/edit',   component: PostComponent,   canActivate:[AuthGuard], },
+  {path:'category', component: PostsComponent, canActivate:[AuthGuard]},
+  {path: 'posts/:id',   component: PostComponent,   canActivate:[AuthGuard]},
+  {path: 'posts/:id/edit',   component: PostComponent,   canActivate:[AuthGuard]},
   {path: '**', redirectTo: '' },
 
 ];

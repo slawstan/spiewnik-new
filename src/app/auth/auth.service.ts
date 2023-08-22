@@ -12,7 +12,6 @@ import {
   HttpErrorResponse,
 } from '@angular/common/http';
 import { Global } from '../global';
-import { withCache } from '@ngneat/cashew';
 
 @Injectable({
   providedIn: 'root',
@@ -21,7 +20,9 @@ export class AuthService {
   //isAuthenticated: boolean = false;
   isLoading: boolean = false;
   passwordMatched: boolean = true;
-
+  private options = {
+    headers: Global.headers
+  };
 
   currentUser = {};
   constructor(private http: HttpClient, public router: Router) {}
@@ -68,11 +69,7 @@ export class AuthService {
   // https://slawek-staniec.pl/blogapp/wp-json/wp/v2/posts',
   getUserProfile(id: any): Observable<any> {
     let api = `${Global.apiUrl}/users/${id}`;
-    return this.http.get(api, { headers: Global.headers, context: withCache({
-      version: 'v1',
-      key: `users/${id}`,
-      ttl: 3153600000
-    }) }).pipe(
+    return this.http.get(api, this.options).pipe(
       map((res) => {
         return res || {};
       }),
