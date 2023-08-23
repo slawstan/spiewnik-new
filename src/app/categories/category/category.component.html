@@ -1,5 +1,5 @@
 <article class="rounded-xl bg-white p-3 shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300 ">
-      <a href="./category?catId={{categ.id}}&category=1">
+      <a href="./category?catId={{categ.id}}&category={{categ.name}}">
         <div class="relative flex items-end overflow-hidden rounded-xl">
           <img class="featured-media" src="{{categ.acf?.obraz_kategorii || 'https://slawek-staniec.pl/blogapp/wp-content/uploads/2023/07/blank.jpg'}}" alt="{{categ.name}}" />
           <div class="flex items-center space-x-1.5 rounded-lg bg-main-500 px-4 py-1.5 text-white duration-100 hover:bg-blue-600">
