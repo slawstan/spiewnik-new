@@ -26,11 +26,12 @@ export class PostComponent implements OnInit {
 
   defaultOptions = {
     cancelOnUserAction: true,
+    easing: (t:number)=>t,
     elementToScroll: window,
     horizontalOffset: 0,
     maxDuration: 200000,
     minDuration: 200000,
-    speed: 50,
+    speed: 60,
     verticalOffset: 0,
   };
 
