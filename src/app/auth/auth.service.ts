@@ -86,6 +86,7 @@ export class AuthService {
       // server-side error
       msg = `Error Code: ${error.status}\nMessage: ${error.message}`;
     }
+    console.log(msg);
     return throwError(msg);
   }
 
