@@ -12,6 +12,10 @@
           "/manifest.webmanifest",
           "/*.css",
           "/*.js"
+        ],
+        "urls": [
+          "https://fonts.googleapis.com/**",
+          "https://fonts.gstatic.com/**"
         ]
       }
     },
@@ -33,10 +37,11 @@
     "cacheConfig": {
            "strategy": "freshness",
            "maxAge": "365d",
-           "maxSize": 100,
-           "timeout": "10s"
+           "maxSize": 10000,
+           "timeout": "5s"
          },
-         "urls": [
+         "urls": [ "https://slawek-staniec.pl/blogapp/wp-json/wp/v2/**",
+         "https://slawek-staniec.pl/blogapp/wp-json/jwt-auth/v1/**",
           "/category**",
           "/blogapp**",
           "/posts**",
