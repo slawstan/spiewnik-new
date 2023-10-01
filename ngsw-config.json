@@ -43,6 +43,7 @@
          },
          "urls": [ "https://slawek-staniec.pl/blogapp/wp-json/wp/v2/**",
          "https://slawek-staniec.pl/blogapp/wp-json/jwt-auth/v1/**",
+         "https://slawek-staniec.pl/blogapp/wp-content/uploads/**",
           "/category**",
           "/blogapp**",
           "/posts**",
