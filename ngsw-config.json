@@ -34,6 +34,7 @@
   "dataGroups": [
   {
     "name": "data",
+    "version": 1,
     "cacheConfig": {
            "strategy": "freshness",
            "maxAge": "365d",
