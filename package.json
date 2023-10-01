@@ -7,8 +7,7 @@
     "build": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
     "server": "npx http-server -p 8080 -c-1 dist/spiewnik-new ",
-    "test": "ng test",
-    "postinstall": "node scripts/service-worker-workaround.js"
+    "test": "ng test"
   },
   "svgGenerator": {
     "outputPath": "./src/app/svg",
