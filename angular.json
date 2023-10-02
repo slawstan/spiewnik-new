@@ -24,7 +24,8 @@
               "src/favicon.ico",
               "src/assets",
               "src/manifest.webmanifest",
-              "src/manifest.webmanifest"
+              "src/manifest.webmanifest",
+              "src/ngsw-worker-ext.js"
             ],
             "styles": [
               "node_modules/@fortawesome/fontawesome-free/css/fontawesome.css",
