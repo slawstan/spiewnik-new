@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, throwError } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { catchError, map, tap } from 'rxjs/operators';
 import {
   HttpClient,
   HttpErrorResponse,
 } from '@angular/common/http';
 import { Global } from '../global';
 import { AuthService } from '../auth/auth.service';
+import { ResponseMessages } from 'src/environments/environment.prod';
 
 
 @Injectable({
@@ -33,10 +34,13 @@ export class PostsService {
   getPost(postId: number): Observable<any> {
     let api = `${Global.apiUrl}/posts/${postId}`;
     return this.http.get(api, this.options).pipe(
+      tap(res => console.log(`Przed transformacją: ${res}`)),
       map((res) => {
         return res || {};
       }),
-      catchError(this.authService.handleError)
+      tap(value => console.log(`Po transformacji: ${value}`)),
+      catchError(this.authService.handleError),
+      tap((x) => this.HandleResponse(x))
     );
   }
 
@@ -48,6 +52,15 @@ export class PostsService {
       }),
       catchError(this.authService.handleError)
     );
+  }
+
+  HandleResponse(response: any) {
+    if (response.Status === 500) {
+      alert(ResponseMessages.serverError);
+    }
+    else if (response.Status === 504) {
+      alert(ResponseMessages.serverError);
+    }
   }
 
 }

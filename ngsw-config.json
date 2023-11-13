@@ -39,7 +39,7 @@
            "strategy": "freshness",
            "maxAge": "365d",
            "maxSize": 10000,
-           "timeout": "5s"
+           "timeout": "10s"
          },
          "urls": [ "https://slawek-staniec.pl/blogapp/wp-json/wp/v2/**",
          "https://slawek-staniec.pl/blogapp/wp-json/jwt-auth/v1/**",
