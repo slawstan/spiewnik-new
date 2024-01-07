@@ -29,21 +29,16 @@ export class PostsService {
     return this.http.get(api, this.options).pipe(
       map((res) => {
         return res || {};
-      }),
-      catchError(this.authService.handleError)
+      })
     );
   }
 
   getPost(postId: number): Observable<any> {
     let api = `${Global.apiUrl}/posts/${postId}`;
     return this.http.get(api, this.options).pipe(
-      tap(res => console.log(`Przed transformacją: ${res}`)),
       map((res) => {
         return res || {};
-      }),
-      tap(value => console.log(`Po transformacji: ${value}`)),
-      catchError(this.authService.handleError),
-      tap((x) => this.HandleResponse(x))
+      })
     );
   }
 
@@ -53,7 +48,6 @@ export class PostsService {
       map((res) => {
         return res || {};
       }),
-      catchError(this.authService.handleError)
     );
   }
 
