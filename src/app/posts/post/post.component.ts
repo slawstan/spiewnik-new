@@ -48,13 +48,20 @@ export class PostComponent implements OnInit {
         let id:number = params['id'];
         let url:string[] = this.router.url.split('/');
         edit = url[3] == 'edit';
-        this.postsService.getPost(id).subscribe((pst) => {
-        this.wpis = pst;
-        this.wpis.rendered = this.getSafeHtml(pst.content?.rendered);
-      });
+        try
+        {
+          this.postsService.getPost(id).subscribe((pst) => {
+          this.wpis = pst;
+          this.wpis.rendered = this.getSafeHtml(pst.content?.rendered);
+          });
+        }
+        catch{
+          this.goBack();
+        }
     });
 
   }
+
 
   zmienRozmiarCzcionki(akcja: 'zmniejsz' | 'zwieksz') {
     if (akcja === 'zmniejsz') {
