@@ -34,9 +34,14 @@ constructor(private postsService: PostsService, private route: ActivatedRoute, p
       }
       if(id != null)
       {
-        this.postsService.getPostsForCategory(id).subscribe((posts) => {
-          this.posts = posts;
-        });
+        try{
+          this.postsService.getPostsForCategory(id).subscribe((posts) => {
+            this.posts = posts;
+          });
+        }
+        catch{
+          this.goBack();
+        }
       }
     })
   }

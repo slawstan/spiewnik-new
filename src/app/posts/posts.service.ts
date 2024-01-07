@@ -4,11 +4,13 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import {
   HttpClient,
+  HttpContext,
   HttpErrorResponse,
 } from '@angular/common/http';
 import { Global } from '../global';
 import { AuthService } from '../auth/auth.service';
 import { ResponseMessages } from 'src/environments/environment.prod';
+import { IGNORED_STATUSES } from '../interceptors/error.interceptor';
 
 
 @Injectable({
@@ -17,7 +19,8 @@ import { ResponseMessages } from 'src/environments/environment.prod';
 export class PostsService {
 
   private options = {
-    headers: Global.headers
+    headers: Global.headers,
+    context: new HttpContext().set(IGNORED_STATUSES, [504]),
   };
   constructor(private http: HttpClient, public router: Router, private authService: AuthService) { }
 
