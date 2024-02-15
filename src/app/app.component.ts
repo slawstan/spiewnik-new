@@ -27,6 +27,7 @@ export class AppComponent implements OnInit {
     ngOnInit(): void {
       //initializeApp(firebaseConfig);
 
+
       let node = document.createElement('script');
       node.src = "/assets/js/myScript.js";
       node.type = 'text/javascript';
@@ -54,7 +55,7 @@ export class AppComponent implements OnInit {
 
     submit() {
       this.searchVal = this.form.searchValue;
-      this.router.navigate(['/', 'category'], {queryParams: {search: this.searchVal}});
+      this.router.navigate(['/', 'search'], {queryParams: {search: this.searchVal}});
     }
 
     eventClickMethod(event:any){

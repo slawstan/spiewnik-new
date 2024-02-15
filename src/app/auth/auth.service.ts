@@ -40,6 +40,7 @@ export class AuthService {
     formData.append('password', user.password);
     return this.http
       .post<any>(`${Global.appJwtUrl}/token`, formData)
+      .pipe(catchError(this.handleError))
       .subscribe((res: any) => {
         localStorage.setItem('access_token', res.data.token);
         localStorage.setItem('user', res.data.id);
@@ -49,7 +50,8 @@ export class AuthService {
           this.router.navigate(['/' + res.id]);
         });
         //this.router.navigate(['']);
-      });
+      })
+
   }
   getToken() {
     return localStorage.getItem('access_token');
@@ -79,7 +81,11 @@ export class AuthService {
   // Error
   handleError(error: HttpErrorResponse) {
     let msg = '';
-    if (error.error instanceof ErrorEvent) {
+    if (error.error.statusCode == 403 && error.error.code == 'incorrect_password')
+    {
+      alert( error.error.message);
+    }
+    else if (error.error instanceof ErrorEvent) {
       // client-side error
       msg = error.error.message;
     } else {

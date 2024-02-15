@@ -45,6 +45,7 @@
          "https://slawek-staniec.pl/blogapp/wp-json/jwt-auth/v1/**",
          "https://slawek-staniec.pl/blogapp/wp-content/uploads/**",
           "/category**",
+		  "/search/*",
           "/blogapp**",
           "/posts**",
            "/post/**",
