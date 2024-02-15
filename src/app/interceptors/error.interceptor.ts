@@ -17,6 +17,9 @@ export class CustomHttpInterceptor implements HttpInterceptor {
 
         // if ignored statuses are set
         // and returned status matched
+        if(e.error.statusCode == 403 && e.error.code == 'incorrect_password') {
+          return throwError(() => e);
+        }
         if (ignoredStatuses?.includes(e.status)) {
           // rethrow error to be catched locally
           return throwError(() => e);

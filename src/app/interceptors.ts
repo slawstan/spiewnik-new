@@ -1,5 +1,5 @@
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
-import { AuthInterceptor } from './interceptors/authconfig.interceptor';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { LOCALE_ID } from '@angular/core';
 import { SpinnerInterceptor } from './interceptors/SpinnerInterceptor';
 import { CustomHttpInterceptor } from './interceptors/error.interceptor';

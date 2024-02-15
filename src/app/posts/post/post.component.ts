@@ -1,11 +1,12 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Input, OnInit } from '@angular/core';
-import { Post } from 'src/types/interfaces/Post';
+import { Component, ElementRef, Input, OnInit } from '@angular/core';
 import { PostsService } from '../posts.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { Global } from 'src/app/global';
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 import animateScrollTo from 'animated-scroll-to';
+import { DataService } from 'src/index-db/sevices/data.service';
+import { IPost, Post } from 'src/index-db/index-db-interfaces/post.interfaces';
 
 
 @Component({
@@ -15,13 +16,14 @@ import animateScrollTo from 'animated-scroll-to';
 })
 export class PostComponent implements OnInit {
   faCoffee = faCoffee;
-  @Input() wpis: Post = {} as Post;
+  @Input() wpis: IPost = {} as Post;
+  post: IPost = {} as Post;
   @Input() ranger:number = 0;
-  postId:number = 0;
+  postId:string = '';
   rozmiarCzcionki: number = 20; // Rozmiar czcionki na początku (wartość domyślna)
   htmlString:string = '';
   musicKey: number = 0;
-  fontSize:number = 20;
+  fontSize:any = 20;
   t:number = 0;
 
   defaultOptions = {
@@ -35,31 +37,55 @@ export class PostComponent implements OnInit {
     verticalOffset: 0,
   };
 
-  constructor(private postsService: PostsService, private route: ActivatedRoute, private router: Router, private sanitizer: DomSanitizer, private element:ElementRef){}
+  constructor(private dataService: DataService, private postsService: PostsService, private route: ActivatedRoute, private router: Router, private sanitizer: DomSanitizer, private element:ElementRef){}
 
   open(path: string) {
     this.router.navigateByUrl(path);
   }
 
-  ngOnInit(): void {
+  async ngOnInit() {
 
     let edit:boolean;
-      this.route.params.subscribe(params=>{
+
+    this.postId = this.route.snapshot.paramMap.get('id') || '';
+    this.post = (await this.dataService.getPostById(Number(this.postId))) as IPost;
+    this.wpis = this.post;
+    //this.wpis.title.rendered = this.getSafeHtml(String(this.post.content.rendered));
+
+    this.route.params.subscribe(params=>{
+      let id:number = params['id'];
+      let url:string[] = this.router.url.split('/');
+      edit = url[3] == 'edit';
+      //this.postId = id;
+
+    });
+
+
+
+
+    /*  this.route.params.subscribe(async params=>{
         let id:number = params['id'];
         let url:string[] = this.router.url.split('/');
         edit = url[3] == 'edit';
         try
         {
-          this.postsService.getPost(id).subscribe((pst) => {
-          this.wpis = pst;
-          this.wpis.rendered = this.getSafeHtml(pst.content?.rendered);
-          });
+          this.post = (await this.dataService.getPostById(id)) as IPost;
+
+          this.wpis = this.post;
+
+          this.wpis.rendered = this.getSafeHtml(this.post.content?.rendered);
+
+          //this.postsService.getPost(id).subscribe((pst) => {
+          //this.wpis = pst;
+          //this.wpis.rendered = this.getSafeHtml(pst.content?.rendered);
+
+          //});
         }
         catch{
           this.goBack();
         }
     });
-
+        */
   }
 
 

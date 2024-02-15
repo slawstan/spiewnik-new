@@ -1,14 +1,14 @@
 
 <div class="full-content">
   <div class="flex justify-center pt-4 pb-2">
-    <h1 id="titleH1" class="text-center text-3xl font-bold">{{wpis.title?.rendered}}</h1>
+    <h1 id="titleH1" class="text-center text-3xl font-bold">{{wpis.title.rendered}}</h1>
   </div>
 
   <div class="flex p-2 justify-center py-1  text-xl leading-normal">
     <div class="rounded-xl bg-white p-3 shadow-lg hover:shadow-xl hover:transform w-full max-w-[900px] duration-300  ">
 
     <div class="content-table" [style.fontSize.px]="rozmiarCzcionki">
-      <div class="content" [innerHTML]="wpis.rendered"></div>
+      <div class="content" [innerHTML]="wpis.content.rendered"></div>
     </div>
   </div>
   </div>
@@ -40,7 +40,7 @@
 <main class="chatbox-popup__main">
   <div class="flex p-2 justify-center py-1  text-xl leading-normal">
     <label class="text-base p-2 align-middle" for="fontSizeRange">Wielkość czcionki:</label>
-    <input title="Wielkość czcionki" name="fontSizeRange" class="ranger" [(ngModel)]="fontSize" type="range" min="10" max="60" [value]="fontSize" #ranger (input)="fontRange()">
+    <input title="Wielkość czcionki" name="fontSizeRange" class="ranger" [(ngModel)]="this.fontSize" type="range" min="10" max="60" [value]="fontSize" #ranger (input)="fontRange()">
   </div>
   <div class="flex end">
       <label class="text-base p-2 align-middle" for="fontSizeRange">Transpozycja:</label>

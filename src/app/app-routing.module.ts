@@ -18,6 +18,7 @@ const routes: Routes = [
   {path:'register',component:RegisterComponent},
   {path:'user-profile/:id',component:UserProfileComponent, canActivate:[AuthGuard]},
   {path:'category', component: PostsComponent, canActivate:[AuthGuard]},
+  {path:'search', component: PostsComponent, canActivate:[AuthGuard]},
   {path: 'posts/:id',   component: PostComponent,   canActivate:[AuthGuard]},
   {path: 'posts/:id/edit',   component: PostComponent,   canActivate:[AuthGuard]},
   {path: '**', redirectTo: '' },
