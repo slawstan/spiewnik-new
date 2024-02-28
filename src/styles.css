@@ -142,3 +142,12 @@ app-svg-icon.icon{
     width: 35px;
     height: 35px;
 }
+
+.perykopa {
+  font-weight: 700;
+  padding-bottom: 20px;
+}
+
+p span {
+  line-height: 35px;
+}
