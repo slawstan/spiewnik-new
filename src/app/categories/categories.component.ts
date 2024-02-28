@@ -82,6 +82,9 @@ export class CategoriesComponent  implements OnInit {
         //this.postId = this.route.snapshot.paramMap.get('id') || '';
         this.post = (await this.dataService.getPostById(Number(this.postId))) as IPost;
         this.wpis = this.post;
+        console.log(this.post.content.rendered);
+        console.log(this.post.content);
+        this.wpis.content.rendered = this.getSafeHtml(String(this.post.content.rendered));
       }
       else if(this.catId != null)
       {

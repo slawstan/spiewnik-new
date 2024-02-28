@@ -319,3 +319,7 @@ textarea::placeholder {
   width: 35px;
   height: 35px;
 }
+
+tr {
+  min-height: 20px;
+}
