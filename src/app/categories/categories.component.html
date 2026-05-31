@@ -1,5 +1,5 @@
 
-<div *ngIf="catId == null &&  postId != null">
+<div *ngIf="catId == null &&  postId != null && wpis.title != null && wpis.content != null">
 
 
 <div class="full-content">
@@ -18,14 +18,14 @@
 <div id="end"></div>
 </div>
 <div class="flex p-2 justify-center py-1  text-xl leading-normal">
-  <button class="play-open" du-smooth-scroll  (click)="scroll()">
+  <button class="play-open" du-smooth-scroll  (click)="scroll()" title="scroll">
     <i class="fa-solid fa-play text-2xl" aria-hidden="true"></i>
   </button>
 </div>
-<button class="chatbox-open">
+<button class="chatbox-open" title="open">
   <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
 </button>
-<button class="chatbox-close">
+<button class="chatbox-close" title="close">
   <i class="fa fa-close fa-2x" aria-hidden="true"></i>
 </button>
 <section class="chatbox-popup">
